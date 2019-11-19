@@ -1,8 +1,8 @@
 import 'Styles/main.scss';
 import Vue from 'vue';
-import HelloWorld from 'Components/HelloWorld.vue';
+import Navbar from 'Components/Navbar.vue';
 
 new Vue({
-  render: createElement => createElement(HelloWorld),
-  el: '#app'
+  render: createElement => createElement(Navbar),
+  el: '#app',
 });

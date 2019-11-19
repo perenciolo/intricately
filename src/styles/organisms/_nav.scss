@@ -1,0 +1,112 @@
+.nav {
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #394783;
+    color: white;
+    padding: 10px 60px;
+
+    .left {
+      flex: 2;
+      display: flex;
+      align-items: center;
+      justify-content: start;
+    }
+
+    .logo {
+      padding-right: 30px;
+    }
+
+    form.search {
+      display: flex;
+      align-items: center;
+      flex: 1;
+
+      > div {
+        padding: 0 20px;
+        text-transform: uppercase;
+      }
+
+      > label {
+        position: relative;
+        z-index: 1;
+        flex: 1;
+        display: flex;
+        align-items: center;
+
+        input {
+          flex: 1;
+          background: rgba(0, 0, 0, 0.5);
+          border: none;
+          padding: 10px;
+          padding-left: 30px;
+          border-radius: 4px;
+          color: white;
+
+          &::placeholder {
+            color: white;
+          }
+        }
+        &:before {
+          content: "";
+          background: url("../images/company-data/search.png") center center;
+          width: 32px;
+          height: 32px;
+          position: absolute;
+          z-index: 2;
+        }
+      }
+
+      > button {
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        background: #5d6999;
+        color: white;
+      }
+    }
+
+    .right {
+      display: flex;
+
+      > div {
+        padding: 0 20px;
+
+        &:last-of-type {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  display: flex;
+  flex: 2;
+
+  &__items {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    text-transform: uppercase;
+
+    > li {
+      font-weight: bold;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+
+      &:first-of-type {
+        padding-left: 30px;
+      }
+
+      &:after {
+        content: "";
+        background: url("../images/company-data/arrow-down.png") center center;
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+}
