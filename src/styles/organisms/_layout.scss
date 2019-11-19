@@ -1,0 +1,28 @@
+.layout {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    @extend %lateral-padding;
+
+    .bread-crumb {
+      text-transform: uppercase;
+      color: #7e7e7e;
+    }
+
+    section {
+      display: flex;
+      flex: 1;
+      margin-top: 20px;
+
+      > aside {
+        flex: 1;
+      }
+
+      > main {
+        flex: 4;
+      }
+    }
+  }
+}

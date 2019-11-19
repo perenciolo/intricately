@@ -1,0 +1,41 @@
+.navtabs {
+  &__wrapper {
+    margin-right: 30px;
+    > nav {
+      .tab {
+        border: 1px solid #d4d9e3;
+        border-top: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 30px;
+        color: #868fb4;
+
+        &:first-of-type {
+          border-top: 1px solid #d4d9e3;
+          border-radius: 5px 5px 0 0;
+        }
+
+        &:last-of-type {
+          border-radius: 0 0 5px 5px;
+        }
+
+        &.active {
+          color: #5f5f5f;
+          position: relative;
+          border-left-color: #344279;
+
+          &:before {
+            content: '';
+            background: #344279 url('../images/company-data/line-active.png')
+              center center;
+            width: 3px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}

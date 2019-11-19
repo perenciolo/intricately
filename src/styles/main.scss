@@ -1,9 +1,13 @@
 // Atoms
-@import "atoms/default";
-@import "atoms/body";
-@import "atoms/anchor";
-@import "atoms/button";
-@import "atoms/ul";
+@import 'atoms/default';
+@import 'atoms/body';
+@import 'atoms/anchor';
+@import 'atoms/button';
+@import 'atoms/lateral-padding';
+@import 'atoms/ul';
 
 // Organisms
-@import "organisms/nav";
+@import 'organisms/layout';
+@import 'organisms/nav';
+@import 'organisms/nav-tabs';
+@import 'organisms/company-data';
