@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Navbar from './Navbar.vue';
-import Layout from './Layout.vue';
+import Navbar from 'Components/Navbar.vue';
+import Layout from 'Components/Layout.vue';
 export default {
   components: {
     Navbar,

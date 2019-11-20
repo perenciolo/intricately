@@ -1,26 +1,22 @@
 <template>
   <div class="layout__wrapper">
-    <div class="bread-crumb">
-      Home / Company Data
-    </div>
+    <div class="bread-crumb">Home / Company Data</div>
     <section>
       <aside>
         <nav-tabs />
       </aside>
       <main>
-        <company-data />
+        <router-view />
       </main>
     </section>
   </div>
 </template>
 
 <script>
-import NavTabs from './NavTabs.vue';
-import CompanyData from './CompanyData.vue';
+import NavTabs from 'Components/NavTabs.vue';
 export default {
   components: {
     NavTabs,
-    CompanyData,
   },
 };
 </script>
