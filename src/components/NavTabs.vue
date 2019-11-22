@@ -1,17 +1,33 @@
 <template>
   <div class="navtabs__wrapper">
     <nav>
-      <div class="tab">
-        <router-link to="/company-data">
-          <a>Company Data</a>
-        </router-link>
-      </div>
-      <div class="tab">
-        <router-link to="/company-table">Company Table</router-link>
-      </div>
-      <div class="tab active">
-        <router-link to="/">Company Page</router-link>
-      </div>
+      <router-link v-slot="{ href, route, navigate, isActive, isExactActive }" to="/company-data">
+        <div
+          :active="isActive"
+          :href="href"
+          @click="navigate"
+          class="tab"
+          :class="{active: isActive}"
+        >Company Data</div>
+      </router-link>
+      <router-link v-slot="{ href, route, navigate, isActive, isExactActive }" to="/company-table">
+        <div
+          :active="isActive"
+          :href="href"
+          @click="navigate"
+          class="tab"
+          :class="{active: isActive}"
+        >Company Table</div>
+      </router-link>
+      <router-link v-slot="{ href, route, navigate, isActive, isExactActive }" to="/">
+        <div
+          :active="isActive"
+          :href="href"
+          @click="navigate"
+          class="tab"
+          :class="{active: isExactActive}"
+        >Company Page</div>
+      </router-link>
     </nav>
   </div>
 </template>

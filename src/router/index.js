@@ -11,11 +11,6 @@ export default new VueRouter({
   // mode: 'history',
   routes: [
     {
-      path: '/',
-      name: 'Company Page',
-      component: Company,
-    },
-    {
       path: '/company-data',
       name: 'Company Data',
       component: CompanyData,
@@ -24,6 +19,11 @@ export default new VueRouter({
       path: '/company-table',
       name: 'Company Table',
       component: CompanyTable,
+    },
+    {
+      path: '/',
+      name: 'Company Page',
+      component: Company,
     },
     { path: '*', component: { template: '<h2>Not Found</h2>' } },
   ],
