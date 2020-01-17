@@ -1,0 +1,28 @@
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 50rem;
+  background: color-opacity(#fff, 0.9);
+  padding: 2rem;
+  border-radius: 4px;
+  z-index: 20;
+
+  &-header {
+    display: flex;
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}

@@ -74,14 +74,18 @@
           id="notes"
           name="notes"
           placeholder="e.g Good Tech Company"
+          @focus="showModal = true"
         ></textarea>
       </label>
     </form>
+    <Modal v-if="showModal" @dismiss="showModal = false" />
   </div>
 </template>
 
 <script>
 import { required, minValue, minLength } from 'vuelidate/lib/validators';
+
+import Modal from '../components/Modal.vue';
 
 const checkPattern = value => {
   const pattern = String(value);
@@ -112,8 +116,11 @@ const checkSpendAbility = value => {
 
 export default {
   name: 'CompanyData',
-  components: {},
+  components: {
+    Modal,
+  },
   data: () => ({
+    showModal: false,
     company: {
       name: '',
       spend: 0,
