@@ -1,20 +1,20 @@
 <template>
   <div class="company-data__wrapper">
-    <div class="text">
+    <div class="text text--default">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra
       sagittis porta. Donec eu magna lobortis, interdum nibh non, scelerisque
       lorem.
     </div>
     <form>
       <label for="name">
-        <span>Company Name</span>
+        <strong class="text-uppercase">Company Name</strong>
         <input
           type="text"
           id="name"
           name="name"
           placeholder="e.g Your Company Name"
-          v-model="$v.company.name.$model"
-          @blur="$v.company.name.$touch()"
+          v-model="$v.name.$model"
+          @blur="$v.name.$touch()"
         />
         <template v-if="nameErrors.length">
           <div
@@ -27,15 +27,15 @@
         </template>
       </label>
       <label for="#spend">
-        <span>Company Spend</span>
+        <strong class="text-uppercase">Company Spend</strong>
         <input
           type="number"
           id="spend"
           name="spend"
           placeholder="e.g $150,000"
-          v-model="$v.company.spend.$model"
+          v-model="$v.spend.$model"
           min="0"
-          @blur="$v.company.spend.$touch()"
+          @blur="$v.spend.$touch()"
         />
         <template v-if="spendErrors.length">
           <div
@@ -48,14 +48,14 @@
         </template>
       </label>
       <label for="#ability">
-        <span>Company Spend Ability</span>
+        <strong class="text-uppercase">Company Spend Ability</strong>
         <input
           type="text"
           id="ability"
           name="ability"
           placeholder="e.g $150,000 - $330,000"
-          v-model="$v.company.ability.$model"
-          @blur="$v.company.ability.$touch()"
+          v-model="$v.ability.$model"
+          @blur="$v.ability.$touch()"
         />
         <template v-if="abilityErrors.length">
           <div
@@ -68,14 +68,14 @@
         </template>
       </label>
       <label for="#notes">
-        <span>Notes</span>
+        <strong class="text-uppercase">Notes</strong>
         <textarea
           type="number"
           id="notes"
           name="notes"
           placeholder="e.g Good Tech Company"
           @focus="$store.commit('showModal')"
-          v-model="company.notes"
+          v-model="notes"
         ></textarea>
       </label>
     </form>
@@ -122,24 +122,22 @@ export default {
     Modal,
   },
   validations: {
-    company: {
-      name: {
-        required,
-        minLength: minLength(1),
-      },
-      spend: {
-        required,
-        minValue: minValue(0),
-      },
-      ability: {
-        required,
-        checkPattern,
-        checkSpendAbility,
-      },
+    name: {
+      required,
+      minLength: minLength(1),
+    },
+    spend: {
+      required,
+      minValue: minValue(0),
+    },
+    ability: {
+      required,
+      checkPattern,
+      checkSpendAbility,
     },
   },
   computed: {
-    ...mapState(['showModal', 'company']),
+    ...mapState(['showModal']),
     name: {
       get() {
         return this.$store.state.company.name;
@@ -164,9 +162,17 @@ export default {
         this.$store.commit('updateAbility', value);
       },
     },
+    notes: {
+      get() {
+        return this.$store.state.company.notes;
+      },
+      set(value) {
+        this.$store.commit('updateNotes', value);
+      },
+    },
     nameErrors() {
       const errors = [];
-      const name = this.$v.company.name;
+      const name = this.$v.name;
 
       if (!name.$error) {
         return errors;
@@ -177,7 +183,7 @@ export default {
     },
     spendErrors() {
       const errors = [];
-      const spend = this.$v.company.spend;
+      const spend = this.$v.spend;
 
       if (!spend.$error) {
         return errors;
@@ -190,8 +196,8 @@ export default {
     },
     abilityErrors() {
       const errors = [];
-      const { spend, ability } = this.company;
-      const abilityValidation = this.$v.company.ability;
+      const { spend, ability } = this;
+      const abilityValidation = this.$v.ability;
 
       if (!abilityValidation.$error) {
         return errors;
