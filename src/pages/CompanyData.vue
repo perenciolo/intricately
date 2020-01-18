@@ -74,15 +74,17 @@
           id="notes"
           name="notes"
           placeholder="e.g Good Tech Company"
-          @focus="showModal = true"
+          @focus="$store.commit('showModal')"
+          v-model="company.notes"
         ></textarea>
       </label>
     </form>
-    <Modal v-if="showModal" @dismiss="showModal = false" />
+    <Modal v-if="showModal" />
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import { required, minValue, minLength } from 'vuelidate/lib/validators';
 
 import Modal from '../components/Modal.vue';
@@ -119,14 +121,6 @@ export default {
   components: {
     Modal,
   },
-  data: () => ({
-    showModal: false,
-    company: {
-      name: '',
-      spend: 0,
-      ability: '',
-    },
-  }),
   validations: {
     company: {
       name: {
@@ -145,6 +139,31 @@ export default {
     },
   },
   computed: {
+    ...mapState(['showModal', 'company']),
+    name: {
+      get() {
+        return this.$store.state.company.name;
+      },
+      set(value) {
+        this.$store.commit('updateName', value);
+      },
+    },
+    spend: {
+      get() {
+        return this.$store.state.company.spend;
+      },
+      set(value) {
+        this.$store.commit('updateSpend', value);
+      },
+    },
+    ability: {
+      get() {
+        return this.$store.state.company.ability;
+      },
+      set(value) {
+        this.$store.commit('updateAbility', value);
+      },
+    },
     nameErrors() {
       const errors = [];
       const name = this.$v.company.name;
@@ -192,6 +211,5 @@ export default {
       return errors;
     },
   },
-  methods: {},
 };
 </script>
